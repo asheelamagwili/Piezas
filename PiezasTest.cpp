@@ -84,8 +84,7 @@ TEST(PiezasTest, full_column)
 TEST(PiezasTest, drop_one_piece)
 {
 	Piezas my_game;
-	my_game.dropPiece(0);
-	EXPECT_EQ(X, my_game.pieceAt(0,2));
+	EXPECT_EQ(X, my_game.dropPiece(0));
 }
 
 // Toggles next turn after one turns
