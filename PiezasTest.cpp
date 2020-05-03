@@ -125,3 +125,12 @@ TEST(PiezasTest, returns_piece_X)
 	my_game.dropPiece(0);
 	EXPECT_EQ(X, my_game.pieceAt(0,0));
 }
+
+// Returns O after two turns
+TEST(PiezasTest, returns_piece_O)
+{
+	Piezas my_game;
+	my_game.dropPiece(0);
+	my_game.dropPiece(0);
+	EXPECT_EQ(O, my_game.pieceAt(0,1));
+}
