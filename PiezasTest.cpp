@@ -109,3 +109,19 @@ TEST(PiezasTest, toggles_two_turns)
 	EXPECT_EQ(X, my_game.dropPiece(2));
 }
 
+/* ----- Testing pieceAt ----- */
+
+// Returns blank piece on empty board
+TEST(PiezasTest, blank_board_and_piece)
+{
+	Piezas my_game;
+	EXPECT_EQ(Blank, my_game.pieceAt(0,0));
+}
+
+// Returns X after one turn
+TEST(PiezasTest, blank_board_and_piece)
+{
+	Piezas my_game;
+	my_game.dropPiece(0);
+	EXPECT_EQ(X, my_game.pieceAt(0,0));
+}

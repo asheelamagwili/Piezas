@@ -1,5 +1,6 @@
 #include "Piezas.h"
 #include <vector>
+#include <cmath> 
 
 using namespace std;
 
@@ -147,6 +148,9 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
+    // Invert row & column
+    row = abs(row - 2);
+
     if(board[row][column] != ' ')
     {
         return board[row][column];
