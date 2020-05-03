@@ -175,3 +175,10 @@ TEST(PiezasTest, out_of_bound_row)
 	Piezas my_game;
 	EXPECT_EQ(Invalid, my_game.pieceAt(5,0));
 }
+
+// Returns Invalid when pieceAt() is given out of bounds coordinates for column
+TEST(PiezasTest, out_of_bound_column)
+{
+	Piezas my_game;
+	EXPECT_EQ(Invalid, my_game.pieceAt(0,4));
+}
