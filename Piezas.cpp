@@ -148,15 +148,17 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    // Invert row & column
+    // Invert row
     row = abs(row - 2);
 
-    if(board[row][column] != ' ')
+    // Out of bounds coordinates
+    if((row >= BOARD_ROWS || row < 0) || (column >= BOARD_COLS || column < 0))
     {
-        return board[row][column];
+        return Invalid;
     }
 
-    return Blank;
+    // Valid coordinates
+    return board[row][column];
 }
 
 /**

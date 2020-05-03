@@ -156,3 +156,10 @@ TEST(PiezasTest, returns_piece_O)
 	my_game.dropPiece(0);
 	EXPECT_EQ(O, my_game.pieceAt(1,0));
 }
+
+// Returns Invalid when pieceAt() is given out of bounds coordinates for row
+TEST(PiezasTest, returns_piece_O)
+{
+	Piezas my_game;
+	EXPECT_EQ(Invalid, my_game.pieceAt(5,0));
+}
