@@ -220,6 +220,11 @@ Piece Piezas::gameState()
                 x_max = 0;
                 o_max = 0;
             }
+            else
+            {
+                cur_lead = Blank;
+            }
+            
         }
 
         // Search vertically
@@ -252,6 +257,11 @@ Piece Piezas::gameState()
                     x_max = 0;
                     o_max = 0;
                 }
+                else
+                {
+                    cur_lead = Blank;
+                }
+                
             }
         }
 
