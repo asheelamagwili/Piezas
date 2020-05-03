@@ -80,7 +80,7 @@ TEST(PiezasTest, toggle_turn_after_oob)
 }
 
 // Detects full column after one player drops into full column
-TEST(PiezasTest, full_column)
+TEST(PiezasTest, drop_into_full_column)
 {
 	Piezas my_game;
 	my_game.dropPiece(0); // 1 - not full
@@ -91,7 +91,7 @@ TEST(PiezasTest, full_column)
 }
 
 // Detects full column after two players drop into full column
-TEST(PiezasTest, full_column)
+TEST(PiezasTest, drop_into_full_column_twice)
 {
 	Piezas my_game;
 	my_game.dropPiece(0); // Not full (X loses turn)
