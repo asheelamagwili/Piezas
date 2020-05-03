@@ -119,8 +119,8 @@ TEST(PiezasTest, toggles_two_turns)
 	EXPECT_EQ(X, my_game.dropPiece(2));
 }
 
-// Fills an entire row
-TEST(PiezasTest, toggles_two_turns)
+// Fills an entire column
+TEST(PiezasTest, fill_entire_column)
 {
 	Piezas my_game;
 	// X's turn
