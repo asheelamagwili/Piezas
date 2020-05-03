@@ -79,13 +79,25 @@ TEST(PiezasTest, toggle_turn_after_oob)
 	EXPECT_EQ(O, val);
 }
 
-// Detects full column
+// Detects full column after one player drops into full column
 TEST(PiezasTest, full_column)
 {
 	Piezas my_game;
 	my_game.dropPiece(0); // 1 - not full
 	my_game.dropPiece(0); // 2 - not full
 	my_game.dropPiece(0); // 3 - full
+
+	EXPECT_EQ(Blank, my_game.dropPiece(0));
+}
+
+// Detects full column after two players drop into full column
+TEST(PiezasTest, full_column)
+{
+	Piezas my_game;
+	my_game.dropPiece(0); // Not full (X loses turn)
+	my_game.dropPiece(0); // Not full (O loses turn)
+	my_game.dropPiece(0); // Full (X loses turn)
+	my_game.dropPiece(0); // Full (O loses turn)
 
 	EXPECT_EQ(Blank, my_game.dropPiece(0));
 }
