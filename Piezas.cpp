@@ -26,10 +26,10 @@ using namespace std;
 Piezas::Piezas()
 {
     // Initialize the size of the board
-    board.resize(4);
+    board.resize(3);
     for(int i = 0;i < (int)board.size(); i++)
     {
-        board[i].resize(3);
+        board[i].resize(4);
     }
 
     // Initialize blank

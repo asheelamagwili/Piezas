@@ -34,7 +34,7 @@ TEST(PiezasTest, construct_blank_board)
 			if(my_game.pieceAt(i,j) != ' ')
 			{
 				is_blank = false;
-				cout<<"["<<i<<"]"<<"["<<j<<"]"<<endl;
+				cout<<"["<<i<<"]"<<"["<<j<<"] = '"<<my_game.pieceAt(i,j)<<"'"<<endl;
 			}
 		}
 	}
