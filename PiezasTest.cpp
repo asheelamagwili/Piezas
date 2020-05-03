@@ -85,37 +85,28 @@ TEST(PiezasTest, drop_one_piece)
 {
 	Piezas my_game;
 	my_game.dropPiece(0);
-	EXPECT_EQ(X, my_game.pieceAt(0,0));
+	EXPECT_EQ(X, my_game.pieceAt(0,2));
 }
 
 // Toggles next turn after one turns
 TEST(PiezasTest, toggles_one_turn)
 {
-	bool toggled = false;
 	Piezas my_game;
-	Piece next_turn = my_game.dropPiece(0);
-	
-	if(next_turn == O)
-	{
-		toggled = true;
-	}
-
-	EXPECT_EQ(toggled, true);
+	// X's turn
+	Piece current_turn = my_game.dropPiece(0);
+	// O's turn
+	EXPECT_EQ(O, my_game.dropPiece(1));
 }
 
 // Toggles next turn after two turns
 TEST(PiezasTest, toggles_two_turns)
 {
-	bool toggled = false;
 	Piezas my_game;
-	Piece next_turn_1 = my_game.dropPiece(0);
-	Piece next_turn_2 = my_game.dropPiece(1);
-	
-	if((next_turn_1 == O) && (next_turn_2 == X))
-	{
-		toggled = true;
-	}
-
-	EXPECT_EQ(toggled, true);
+	// X's turn
+	my_game.dropPiece(0);
+	// O's turn
+	my_game.dropPiece(1);
+	// X's turn again
+	EXPECT_EQ(X, my_game.dropPiece(2));
 }
 
