@@ -256,7 +256,6 @@ Piece Piezas::gameState()
         }
 
         return cur_lead;
-
     }
 
     // If board is not full, game is not over    

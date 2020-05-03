@@ -209,17 +209,20 @@ TEST(PiezasTest, incomplete_game)
 	EXPECT_EQ(Invalid, my_game.gameState());
 }
 
-// Detect complete game but no winner
-TEST(PiezasTest, complete_game_no_winner)
+// Detect complete game with X as winner
+TEST(PiezasTest, complete_game_X_winner)
 {
 	Piezas my_game;
 	for(int i = 0;i < BOARD_ROWS; i++)
 	{
 		for(int j = 0;j < BOARD_COLS; j++)
 		{
+			// X's turn
 			my_game.dropPiece(j);
+			// Skip O's turn by dropping the piece out-of-bounds
+			my_game.dropPiece(10);
 		}
 	}
-	EXPECT_EQ(Blank, my_game.gameState());
+	EXPECT_EQ(X, my_game.gameState());
 }
 
