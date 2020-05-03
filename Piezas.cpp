@@ -26,13 +26,13 @@ using namespace std;
 Piezas::Piezas()
 {
     // Initialize the size of the board
-    board.resize(3);
+    board.resize(BOARD_ROWS);
     for(int i = 0;i < (int)board.size(); i++)
     {
-        board[i].resize(4);
+        board[i].resize(BOARD_COLS);
     }
 
-    // Initialize blank
+    // Initialize blank values
     for(int i = 0;i < (int)board.size(); i++)
     {
         for(int j = 0;j < (int)board[i].size(); j++)
@@ -40,6 +40,9 @@ Piezas::Piezas()
             board[i][j] = Blank;
         }
     }
+
+    // Initialize X's initial turn
+    turn = X;
 }
 
 /**
@@ -48,6 +51,21 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+    // Initialize the size of the board
+    board.resize(BOARD_ROWS);
+    for(int i = 0;i < (int)board.size(); i++)
+    {
+        board[i].resize(BOARD_COLS);
+    }
+
+    // Initialize blank values
+    for(int i = 0;i < (int)board.size(); i++)
+    {
+        for(int j = 0;j < (int)board[i].size(); j++)
+        {
+            board[i][j] = Blank;
+        }
+    }
 }
 
 /**
@@ -60,6 +78,66 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
+    /* ----- Out-of-bounds Coordinates ----- */
+    if(column >= BOARD_COLS || column < 0)
+    {
+        // Player loses turn
+        if(turn == X)
+        {
+            turn = O;
+        }
+        else
+        {
+            turn = X;
+        }
+        
+        return Invalid;
+    }
+
+    /* ----- Column is Full ----- */
+    // Check from bottom to top if the column is full
+    bool column_full = true;
+    for(int k = BOARD_ROWS-1; k >= 0; k--)
+    {
+        if(board[k][column] == Blank)
+        {
+            column_full = false;
+        }
+    }
+
+    if(column_full)
+    {
+        // Player loses turn
+        if(turn == X)
+        {
+            turn = O;
+        }
+        else
+        {
+            turn = X;
+        }
+        return Blank;
+    }
+
+    /* ----- Valid Column ----- */
+    // Place the value in the next available spot in given column
+    for(int i = 2;i >= 0; i--)
+    {
+        if(board[i][column] == Blank)
+        {
+            board[i][column] = turn;
+            // Next player's turn
+            if(turn == X)
+            {
+                turn = O;
+            }
+            else
+            {
+                turn = X;
+            }
+            return board[i][column];
+        }
+    }
     return Blank;
 }
 

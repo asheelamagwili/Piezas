@@ -21,7 +21,7 @@ TEST(PiezasTest, sanityCheck)
 	ASSERT_TRUE(true);
 }
 
-// Constructors
+// Testing Constructor
 TEST(PiezasTest, construct_blank_board)
 {
 	bool is_blank = true;
@@ -34,9 +34,27 @@ TEST(PiezasTest, construct_blank_board)
 			if(my_game.pieceAt(i,j) != ' ')
 			{
 				is_blank = false;
-				cout<<"["<<i<<"]"<<"["<<j<<"] = '"<<my_game.pieceAt(i,j)<<"'"<<endl;
 			}
 		}
 	}
-	ASSERT_TRUE(is_blank);
+	EXPECT_EQ(is_blank, true);
 }
+
+TEST(PiezasTest, construct_nonblank_board)
+{
+	bool is_blank = true;
+	Piezas my_game;
+	
+	for(int i = 0; i < 3; i++)
+	{
+		for(int j = 0;j < 4; j++)
+		{
+			if(my_game.pieceAt(i,j) != ' ')
+			{
+				is_blank = false;
+			}
+		}
+	}
+	EXPECT_EQ(is_blank, false);
+}
+
