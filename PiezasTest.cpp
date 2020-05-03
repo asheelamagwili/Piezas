@@ -119,7 +119,7 @@ TEST(PiezasTest, blank_board_and_piece)
 }
 
 // Returns X after one turn
-TEST(PiezasTest, blank_board_and_piece)
+TEST(PiezasTest, returns_piece_X)
 {
 	Piezas my_game;
 	my_game.dropPiece(0);
