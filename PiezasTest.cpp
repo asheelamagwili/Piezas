@@ -89,7 +89,7 @@ TEST(PiezasTest, drop_one_piece)
 }
 
 // Toggles next turn after one turns
-TEST(PiezasTest, toggles_turn)
+TEST(PiezasTest, toggles_one_turn)
 {
 	bool toggled = false;
 	Piezas my_game;
@@ -104,7 +104,7 @@ TEST(PiezasTest, toggles_turn)
 }
 
 // Toggles next turn after two turns
-TEST(PiezasTest, toggles_turn)
+TEST(PiezasTest, toggles_two_turns)
 {
 	bool toggled = false;
 	Piezas my_game;
