@@ -182,3 +182,18 @@ TEST(PiezasTest, out_of_bound_column)
 	Piezas my_game;
 	EXPECT_EQ(Invalid, my_game.pieceAt(0,4));
 }
+
+/* ----- Testing reset ----- */
+
+// Resets game after two turns & checks that (0,0) is blank again
+TEST(PiezasTest, resetting_after_two_turns)
+{
+	Piezas my_game;
+	// X's turn
+	my_game.dropPiece(0);
+	// O's turn
+	my_game.dropPiece(1);
+	// Reset game
+	my_game.reset();
+	EXPECT_EQ(Blank, my_game.pieceAt(0,0));
+}

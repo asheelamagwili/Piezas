@@ -67,6 +67,9 @@ void Piezas::reset()
             board[i][j] = Blank;
         }
     }
+
+    // Reset the turn to X
+    turn = X;
 }
 
 /**
