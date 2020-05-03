@@ -197,3 +197,6 @@ TEST(PiezasTest, resetting_after_two_turns)
 	my_game.reset();
 	EXPECT_EQ(Blank, my_game.pieceAt(0,0));
 }
+
+/* ----- Testing gameState ----- */
+

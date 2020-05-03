@@ -174,5 +174,96 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
+    // Check if board is full
+    bool is_full = true;
+    int i, j;
+    for(i = 0;i < (int)board.size(); i++)
+    {
+        for(j = 0;j < (int)board[i].size(); j++)
+        {
+            if(board[i][j] == Blank)
+            {
+                is_full = false;
+            }
+        }
+    }
+
+    // If board is full, check for the winner
+    if(is_full)
+    {
+        int x_max = 0; // Track X's longest streak
+        int o_max = 0; // Track O's longest streak
+        Piece cur_lead = Blank; // Track which one is currently in the lead
+
+        // Search horizontally
+        for(i = 0;i < (int)board.size(); i++)
+        {
+            for(j = 0;j < (int)board[i].size(); j++)
+            {
+                // Count streaks
+                if(board[i][j] == X)
+                    x_max++;
+                else if(board[i][j] == O)
+                    o_max++;
+            }
+
+            // Update who is in the lead after each row & reset
+            if(x_max > o_max)
+            {
+                cur_lead = X;
+                x_max = 0;
+                o_max = 0;
+            }
+            else if(o_max > x_max)
+            {
+                cur_lead = O;
+                x_max = 0;
+                o_max = 0;
+            }
+        }
+
+        // Search vertically
+        j = 0; // Column
+        for(i = 0;i < (int)board.size(); i++)
+        {
+            // Count streaks
+            if(board[i][j] == X)
+                x_max++;
+            else if(board[i][j] == O)
+                o_max++;
+
+            // End of the column
+            if(i == (int)board.size()-1)
+            {
+                // Update column if it's inbounds
+                if(j < BOARD_COLS)
+                    j++;
+                
+                // Update who is in the lead after each row & reset
+                if(x_max > o_max)
+                {
+                    cur_lead = X;
+                    x_max = 0;
+                    o_max = 0;
+                }
+                else if(o_max > x_max)
+                {
+                    cur_lead = O;
+                    x_max = 0;
+                    o_max = 0;
+                }
+            }
+        }
+
+        return cur_lead;
+
+    }
+
+    // If board is not full, game is not over
+    else
+    {
+        return Invalid;
+    }
+    
     return Blank;
 }
