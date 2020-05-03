@@ -194,6 +194,8 @@ Piece Piezas::gameState()
         int x_max = 0; // Track X's longest streak
         int o_max = 0; // Track O's longest streak
         Piece cur_lead = Blank; // Track which one is currently in the lead
+        Piece lead = Blank;
+        int lead_streak = 0;
 
         // Search horizontally
         for(i = 0;i < (int)board.size(); i++)
@@ -208,21 +210,25 @@ Piece Piezas::gameState()
             }
 
             // Update who is in the lead after each row & reset
-            if(x_max > o_max)
+            if(x_max > o_max && x_max > lead_streak)
             {
                 cur_lead = X;
+                lead_streak = x_max;
                 x_max = 0;
                 o_max = 0;
             }
-            else if(o_max > x_max)
+            else if(o_max > x_max && o_max > lead_streak)
             {
                 cur_lead = O;
+                lead_streak = o_max;
                 x_max = 0;
                 o_max = 0;
             }
             else
             {
                 cur_lead = Blank;
+                x_max = 0;
+                o_max = 0;
             }
             
         }
@@ -245,21 +251,25 @@ Piece Piezas::gameState()
                     j++;
                 
                 // Update who is in the lead after each row & reset
-                if(x_max > o_max)
+                if(x_max > o_max && x_max > lead_streak)
                 {
                     cur_lead = X;
+                    lead_streak = x_max;
                     x_max = 0;
                     o_max = 0;
                 }
-                else if(o_max > x_max)
+                else if(o_max > x_max && o_max > lead_streak)
                 {
                     cur_lead = O;
+                    lead_streak = o_max;
                     x_max = 0;
                     o_max = 0;
                 }
                 else
                 {
                     cur_lead = Blank;
+                    x_max = 0;
+                    o_max = 0;
                 }
                 
             }
