@@ -66,6 +66,11 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
+    if(board[row][column] != ' ')
+    {
+        return board[row][column];
+    }
+    
     return Blank;
 }
 

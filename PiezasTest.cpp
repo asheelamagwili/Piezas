@@ -23,12 +23,13 @@ TEST(PiezasTest, sanityCheck)
 TEST(PiezasTest, construct_blank_board)
 {
 	bool is_blank = true;
+	Piezas my_game;
 	
-	for(int i = 0; i < (int)board.size(); i++)
+	for(int i = 0; i < 3; i++)
 	{
-		for(int j = 0;j < (int)board[i].size(); j++)
+		for(int j = 0;j < 4; j++)
 		{
-			if(board[i][j] != ' ')
+			if(my_game.pieceAt(i,j) != ' ')
 			{
 				is_blank = false;
 			}
