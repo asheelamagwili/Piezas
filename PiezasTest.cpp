@@ -200,3 +200,12 @@ TEST(PiezasTest, resetting_after_two_turns)
 
 /* ----- Testing gameState ----- */
 
+// Detect incomplete game
+TEST(PiezasTest, out_of_bound_column)
+{
+	Piezas my_game;
+	my_game.dropPiece(0);
+	my_game.dropPiece(1);
+	EXPECT_EQ(Invalid, my_game.gameState());
+}
+
