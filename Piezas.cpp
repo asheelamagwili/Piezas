@@ -139,7 +139,6 @@ Piece Piezas::dropPiece(int column)
             return board[i][column];
         }
     }
-    return Blank;
 }
 
 /**
