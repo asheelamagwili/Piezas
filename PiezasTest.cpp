@@ -51,6 +51,16 @@ TEST(PiezasTest, out_of_bounds_positive)
 	EXPECT_EQ(Invalid, my_game.dropPiece(10));
 }
 
+// Detects out-of-bounds in the positive range after two turns
+TEST(PiezasTest, out_of_bounds_positive_on_second_turn)
+{
+	Piezas my_game;
+	// X loses their turn
+	my_game.dropPiece(10);
+	// O loses their turn
+	EXPECT_EQ(Invalid, my_game.dropPiece(4));
+}
+
 // Detects out-of-bounds in the negative range
 TEST(PiezasTest, out_of_bounds_negative)
 {
@@ -107,6 +117,18 @@ TEST(PiezasTest, toggles_two_turns)
 	my_game.dropPiece(1);
 	// X's turn again
 	EXPECT_EQ(X, my_game.dropPiece(2));
+}
+
+// Fills an entire row
+TEST(PiezasTest, toggles_two_turns)
+{
+	Piezas my_game;
+	// X's turn
+	EXPECT_EQ(X, my_game.dropPiece(0));
+	// O's turn
+	EXPECT_EQ(O, my_game.dropPiece(0));
+	// X's turn again
+	EXPECT_EQ(X, my_game.dropPiece(0));
 }
 
 /* ----- Testing pieceAt ----- */
