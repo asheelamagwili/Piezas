@@ -254,6 +254,6 @@ TEST(PiezasTest, complete_game_no_winner)
 			my_game.dropPiece(j);
 		}
 	}
-	EXPECT_EQ(O, my_game.gameState());
+	EXPECT_EQ(Blank, my_game.gameState());
 }
 
