@@ -44,7 +44,7 @@ TEST(PiezasTest, construct_nonblank_board)
 {
 	bool is_blank = true;
 	Piezas my_game;
-	
+	my_game.dropPiece(0);
 	for(int i = 0; i < 3; i++)
 	{
 		for(int j = 0;j < 4; j++)
