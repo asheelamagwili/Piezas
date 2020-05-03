@@ -18,3 +18,21 @@ TEST(PiezasTest, sanityCheck)
 {
 	ASSERT_TRUE(true);
 }
+
+// Constructors
+TEST(PiezasTest, construct_blank_board)
+{
+	bool is_blank = true;
+	
+	for(int i = 0; i < (int)board.size(); i++)
+	{
+		for(int j = 0;j < (int)board[i].size(); j++)
+		{
+			if(board[i][j] != ' ')
+			{
+				is_blank = false;
+			}
+		}
+	}
+	ASSERT_TRUE(is_blank);
+}
