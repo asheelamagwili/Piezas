@@ -4,6 +4,8 @@
 
 #include <gtest/gtest.h>
 #include "Piezas.h"
+
+using namespace std;
  
 class PiezasTest : public ::testing::Test
 {
