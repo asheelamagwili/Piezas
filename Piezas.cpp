@@ -259,11 +259,6 @@ Piece Piezas::gameState()
 
     }
 
-    // If board is not full, game is not over
-    else
-    {
-        return Invalid;
-    }
-    
-    return Blank;
+    // If board is not full, game is not over    
+    return Invalid;
 }

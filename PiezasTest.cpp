@@ -209,3 +209,17 @@ TEST(PiezasTest, incomplete_game)
 	EXPECT_EQ(Invalid, my_game.gameState());
 }
 
+// Detect complete game but no winner
+TEST(PiezasTest, complete_game_no_winner)
+{
+	Piezas my_game;
+	for(int i = 0;i < BOARD_ROWS; i++)
+	{
+		for(int j = 0;j < BOARD_COLS; j++)
+		{
+			my_game.dropPiece(j);
+		}
+	}
+	EXPECT_EQ(Blank, my_game.gameState());
+}
+
