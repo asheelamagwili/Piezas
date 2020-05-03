@@ -21,7 +21,9 @@ TEST(PiezasTest, sanityCheck)
 	ASSERT_TRUE(true);
 }
 
-// Testing Constructor
+/* ----- Testing Constructor ----- */
+
+// Construct a blank board
 TEST(PiezasTest, construct_blank_board)
 {
 	bool is_blank = true;
@@ -40,21 +42,80 @@ TEST(PiezasTest, construct_blank_board)
 	EXPECT_EQ(is_blank, true);
 }
 
-TEST(PiezasTest, construct_nonblank_board)
+/* ----- Testing DropPiece ----- */
+
+// Detects out-of-bounds in the positive range
+TEST(PiezasTest, out_of_bounds_positive)
 {
-	bool is_blank = true;
+	Piezas my_game;
+	EXPECT_EQ(Invalid, my_game.dropPiece(10));
+}
+
+// Detects out-of-bounds in the negative range
+TEST(PiezasTest, out_of_bounds_negative)
+{
+	Piezas my_game;
+	EXPECT_EQ(Invalid, my_game.dropPiece(-2));
+}
+
+// Toggles turn after out-of-bound location (X -> O)
+TEST(PiezasTest, toggle_turn_after_oob)
+{
+	Piezas my_game;
+	// Drop out-of-bound piece (X)
+	my_game.dropPiece(5);
+	// Next player takes turn (O)
+	Piece val = my_game.dropPiece(0);
+	EXPECT_EQ(O, val);
+}
+
+// Detects full column
+TEST(PiezasTest, full_column)
+{
+	Piezas my_game;
+	my_game.dropPiece(0); // 1 - not full
+	my_game.dropPiece(0); // 2 - not full
+	my_game.dropPiece(0); // 3 - full
+
+	EXPECT_EQ(Blank, my_game.dropPiece(0));
+}
+
+// Drops one piece in column 0
+TEST(PiezasTest, drop_one_piece)
+{
 	Piezas my_game;
 	my_game.dropPiece(0);
-	for(int i = 0; i < 3; i++)
+	EXPECT_EQ(X, my_game.pieceAt(0,0));
+}
+
+// Toggles next turn after one turns
+TEST(PiezasTest, toggles_turn)
+{
+	bool toggled = false;
+	Piezas my_game;
+	Piece next_turn = my_game.dropPiece(0);
+	
+	if(next_turn == O)
 	{
-		for(int j = 0;j < 4; j++)
-		{
-			if(my_game.pieceAt(i,j) != ' ')
-			{
-				is_blank = false;
-			}
-		}
+		toggled = true;
 	}
-	EXPECT_EQ(is_blank, false);
+
+	EXPECT_EQ(toggled, true);
+}
+
+// Toggles next turn after two turns
+TEST(PiezasTest, toggles_turn)
+{
+	bool toggled = false;
+	Piezas my_game;
+	Piece next_turn_1 = my_game.dropPiece(0);
+	Piece next_turn_2 = my_game.dropPiece(1);
+	
+	if((next_turn_1 == O) && (next_turn_2 == X))
+	{
+		toggled = true;
+	}
+
+	EXPECT_EQ(toggled, true);
 }
 
