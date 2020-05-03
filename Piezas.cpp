@@ -22,6 +22,21 @@
 **/
 Piezas::Piezas()
 {
+    // Initialize the size of the board
+    board.resize(4);
+    for(int i = 0;i < (int)board.size(); i++)
+    {
+        board[i].resize(3);
+    }
+
+    // Initialize blank
+    for(int i = 0;i < (int)board.size(); i++)
+    {
+        for(int j = 0;j < (int)board[i].size(); j++)
+        {
+            board[i][j] = Blank;
+        }
+    }
 }
 
 /**
