@@ -272,7 +272,9 @@ TEST(PiezasTest, complete_game_vertical_winner)
 		for(int i = 0;i < BOARD_ROWS; i++)
 		{
 			my_game.dropPiece(col);
+			cout<<my_game.pieceAt(i,col)<<" ";
 		}
+		cout<<endl;
 	}
 	
 	EXPECT_EQ(X, my_game.gameState());
