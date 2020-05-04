@@ -276,6 +276,10 @@ TEST(PiezasTest, complete_game_vertical_winner)
 		}
 		cout<<endl;
 	}
+	cout<<my_game.pieceAt(0,3)<<endl;
+	cout<<my_game.pieceAt(1,3)<<endl;
+	cout<<my_game.pieceAt(2,3)<<endl;
+
 	
 	EXPECT_EQ(X, my_game.gameState());
 }
