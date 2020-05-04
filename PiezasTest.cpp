@@ -252,7 +252,9 @@ TEST(PiezasTest, complete_game_no_winner)
 		for(int i = 0;i < BOARD_ROWS; i++)
 		{
 			my_game.dropPiece(col);
+			cout<<my_game.pieceAt(i,j)<<" ";
 		}
+		cout<<endl;
 	}
 	EXPECT_EQ(Blank, my_game.gameState());
 }
