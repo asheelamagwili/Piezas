@@ -1,5 +1,9 @@
 # Piezas
 
+[![Build Status](https://travis-ci.org/asheelamagwili/Piezas.svg?branch=master)](https://travis-ci.org/asheelamagwili/Piezas)
+
+[![Coverage Status](https://coveralls.io/repos/github/asheelamagwili/Piezas/badge.svg?branch=master)](https://coveralls.io/github/asheelamagwili/Piezas?branch=master)
+
 ## Associated Enumerated Types
 `Piece` has four possible values: `X`,`O`,`Invalid`, and `Blank`
 

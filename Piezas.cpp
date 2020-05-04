@@ -287,13 +287,6 @@ Piece Piezas::gameState()
                 x_max = 0;
                 o_max = 0;
             }
-
-            // Determine who is in the lead overall
-            /*if(cur_lead_streak > lead_streak)
-            {
-                lead_streak = cur_lead_streak;
-                lead = cur_lead;
-            }*/
         }
         return cur_lead;
     }
