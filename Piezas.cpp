@@ -252,7 +252,7 @@ Piece Piezas::gameState()
         // Search veritcally
         for(int col = 0;col < BOARD_COLS; col++)
         {
-            for(int row = 0; row < BOARD_ROWS; row++)
+            for(int row = 1; row < BOARD_ROWS; row++)
             {
                 // Count streaks
                 if(board[row][col] == X && board[row-1][col] == X)
