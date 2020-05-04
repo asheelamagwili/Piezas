@@ -202,13 +202,18 @@ Piece Piezas::gameState()
         // Search horizontally
         for(i = 0;i < (int)board.size(); i++)
         {
-            for(j = 0;j < (int)board[i].size(); j++)
+            for(j = 1;j < (int)board[i].size(); j++)
             {
                 // Count streaks
-                if(board[i][j] == X)
+                if(board[i][j] == X && board[i][j-1] == X)
                     x_max++;
-                else if(board[i][j] == O)
+                else if(board[i][j] == O && board[i][j-1] == O)
                     o_max++;
+                else
+                {
+                    x_max = 1;
+                    o_max = 1;
+                }
             }
 
             // Determine who is in the lead within the row
@@ -250,10 +255,15 @@ Piece Piezas::gameState()
             for(int row = 0; row < BOARD_ROWS; row++)
             {
                 // Count streaks
-                if(board[row][col] == X)
+                if(board[row][col] == X && board[row-1][col] == X)
                     x_max++;
-                else if(board[row][col] == O)
+                else if(board[row][col] == O && board[row-1][col] == O)
                     o_max++;
+                else
+                {
+                    x_max = 1;
+                    o_max = 1;
+                }
             }
 
             // Determine who is in the lead within the column
@@ -277,9 +287,6 @@ Piece Piezas::gameState()
                 x_max = 0;
                 o_max = 0;
             }
-
-            cout<<"Current lead: "<<cur_lead<<endl;
-            cout<<"Lead streak: "<<cur_lead_streak<<endl;
 
             // Determine who is in the lead overall
             if(cur_lead_streak > lead_streak)
