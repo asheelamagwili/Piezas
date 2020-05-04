@@ -211,14 +211,14 @@ Piece Piezas::gameState()
             }
 
             // Update who is in the lead after each row & reset
-            if(x_max > o_max && x_max > lead_streak)
+            if(x_max > o_max)
             {
                 cur_lead = X;
                 lead_streak = x_max;
                 x_max = 0;
                 o_max = 0;
             }
-            else if(o_max > x_max && o_max > lead_streak)
+            else if(o_max > x_max)
             {
                 cur_lead = O;
                 lead_streak = o_max;
@@ -227,53 +227,47 @@ Piece Piezas::gameState()
             }
             else
             {
-                cur_lead = Blank;
+                lead_streak = x_max;
                 x_max = 0;
                 o_max = 0;
             }
         }
 
-        // Search vertically
-        j = 0; // Column
-        for(i = 0;i < (int)board.size(); i++)
-        {
-            // Count streaks
-            if(board[i][j] == X)
-                x_max++;
-            else if(board[i][j] == O)
-                o_max++;
+        x_max = 0;
+        o_max = 0;
 
-            // End of the column
-            if(i == (int)board.size()-1)
+        // Search veritcally
+        for(int col = 0;col < BOARD_COLS; col++)
+        {
+            for(int row = 0; row < BOARD_ROWS; row++)
             {
-                // Update column & row if it's inbounds
-                if(j < BOARD_COLS)
-                {
-                    j++;
-                    i = 0;
-                }
-                
-                // Update who is in the lead after each row & reset
-                if(x_max > o_max && x_max > lead_streak)
-                {
-                    cur_lead = X;
-                    lead_streak = x_max;
-                    x_max = 0;
-                    o_max = 0;
-                }
-                else if(o_max > x_max && o_max > lead_streak)
-                {
-                    cur_lead = O;
-                    lead_streak = o_max;
-                    x_max = 0;
-                    o_max = 0;
-                }
-                else
-                {
-                    x_max = 0;
-                    o_max = 0;
-                }
-                
+                // Count streaks
+                if(board[row][col] == X)
+                    x_max++;
+                else if(board[row][col] == O)
+                    o_max++;
+            }
+
+            // Update who is in the lead after each column & reset
+            if(x_max > o_max)
+            {
+                cur_lead = X;
+                lead_streak = x_max;
+                x_max = 0;
+                o_max = 0;
+            }
+            else if(o_max > x_max)
+            {
+                cur_lead = O;
+                lead_streak = o_max;
+                x_max = 0;
+                o_max = 0;
+            }
+            else
+            {
+                lead_streak = x_max;
+                x_max = 0;
+                o_max = 0;
             }
         }
         return cur_lead;
