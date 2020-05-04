@@ -252,7 +252,7 @@ TEST(PiezasTest, complete_game_no_winner)
 		for(int i = 0;i < BOARD_ROWS; i++)
 		{
 			my_game.dropPiece(col);
-			cout<<my_game.pieceAt(i,j)<<" ";
+			cout<<my_game.pieceAt(i,col)<<" ";
 		}
 		cout<<endl;
 	}
