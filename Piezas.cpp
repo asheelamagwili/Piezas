@@ -270,7 +270,6 @@ Piece Piezas::gameState()
                 }
                 else
                 {
-                    cur_lead = Blank;
                     x_max = 0;
                     o_max = 0;
                 }
