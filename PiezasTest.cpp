@@ -247,14 +247,12 @@ TEST(PiezasTest, complete_game_O_winner)
 TEST(PiezasTest, complete_game_no_winner)
 {
 	Piezas my_game;
-	for(int i = 0;i < BOARD_ROWS; i++)
+	for(int col = 0; col < BOARD_COLS; col++)
 	{
-		for(int j = 0;j < BOARD_COLS; j++)
+		for(int i = 0;i < BOARD_ROWS; i++)
 		{
-			my_game.dropPiece(j);
-			cout<<my_game.pieceAt(i,j)<<" ";
+			my_game.dropPiece(col);
 		}
-		cout<<endl;
 	}
 	EXPECT_EQ(Blank, my_game.gameState());
 }
