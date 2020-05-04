@@ -278,6 +278,9 @@ Piece Piezas::gameState()
                 o_max = 0;
             }
 
+            cout<<"Current lead: "<<cur_lead<<endl;
+            cout<<"Lead streak: "<<cur_lead_streak<<endl;
+
             // Determine who is in the lead overall
             if(cur_lead_streak > lead_streak)
             {
