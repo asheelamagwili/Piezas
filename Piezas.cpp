@@ -197,6 +197,7 @@ Piece Piezas::gameState()
         Piece cur_lead = Blank; // Track which one is currently in the lead
         Piece lead = Blank;
         int lead_streak = 0;
+        int cur_lead_streak = 0;
 
         // Search horizontally
         for(i = 0;i < (int)board.size(); i++)
@@ -210,26 +211,33 @@ Piece Piezas::gameState()
                     o_max++;
             }
 
-            // Update who is in the lead after each row & reset
+            // Determine who is in the lead within the row
             if(x_max > o_max)
             {
                 cur_lead = X;
-                lead_streak = x_max;
+                cur_lead_streak = x_max;
                 x_max = 0;
                 o_max = 0;
             }
             else if(o_max > x_max)
             {
                 cur_lead = O;
-                lead_streak = o_max;
+                cur_lead_streak = o_max;
                 x_max = 0;
                 o_max = 0;
             }
             else
             {
-                lead_streak = x_max;
+                cur_lead_streak = x_max;
                 x_max = 0;
                 o_max = 0;
+            }
+
+            // Determine who is in the lead overall
+            if(cur_lead_streak > lead_streak)
+            {
+                lead_streak = cur_lead_streak;
+                lead = cur_lead;
             }
         }
 
@@ -248,26 +256,33 @@ Piece Piezas::gameState()
                     o_max++;
             }
 
-            // Update who is in the lead after each column & reset
+            // Determine who is in the lead within the column
             if(x_max > o_max)
             {
                 cur_lead = X;
-                lead_streak = x_max;
+                cur_lead_streak = x_max;
                 x_max = 0;
                 o_max = 0;
             }
             else if(o_max > x_max)
             {
                 cur_lead = O;
-                lead_streak = o_max;
+                cur_lead_streak = o_max;
                 x_max = 0;
                 o_max = 0;
             }
             else
             {
-                lead_streak = x_max;
+                cur_lead_streak = x_max;
                 x_max = 0;
                 o_max = 0;
+            }
+
+            // Determine who is in the lead overall
+            if(cur_lead_streak > lead_streak)
+            {
+                lead_streak = cur_lead_streak;
+                lead = cur_lead;
             }
         }
         return cur_lead;
