@@ -196,7 +196,7 @@ Piece Piezas::gameState()
         int o_max = 0; // Track O's longest streak
         Piece cur_lead = Blank; // Track which one is currently in the lead
         Piece lead = Blank;
-        int lead_streak = 0;
+        int lead_streak = 1;
         int cur_lead_streak = 0;
 
         // Search horizontally
