@@ -253,9 +253,12 @@ Piece Piezas::gameState()
             {
                 cout<<"X: "<<x_max<<endl;
                 cout<<"O: "<<o_max<<endl;
-                // Update column if it's inbounds
+                // Update column & row if it's inbounds
                 if(j < BOARD_COLS)
+                {
                     j++;
+                    i = 0;
+                }
                 
                 // Update who is in the lead after each row & reset
                 if(x_max > o_max && x_max > lead_streak)
