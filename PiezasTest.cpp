@@ -252,10 +252,31 @@ TEST(PiezasTest, complete_game_no_winner)
 		for(int i = 0;i < BOARD_ROWS; i++)
 		{
 			my_game.dropPiece(col);
-			cout<<my_game.pieceAt(i,col)<<" ";
 		}
-		cout<<endl;
 	}
 	EXPECT_EQ(Blank, my_game.gameState());
 }
+
+// Detect winner from vertical win
+TEST(PiezasTest, complete_game_vertical_winner)
+{
+	Piezas my_game;
+	my_game.dropPiece(3); // Drop X
+	my_game.dropPiece(10); // Skip O
+	my_game.dropPiece(3); // Drop X
+	my_game.dropPiece(10); // Skip 0
+	my_game.dropPiece(3); // Drop X
+	my_game.dropPiece(10); // Skip 0
+	for(int col = 0; col < BOARD_COLS-1; col++)
+	{
+		for(int i = 0;i < BOARD_ROWS; i++)
+		{
+			my_game.dropPiece(col);
+		}
+	}
+	
+	EXPECT_EQ(X, my_game.gameState());
+}
+
+
 
