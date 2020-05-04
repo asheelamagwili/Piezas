@@ -210,10 +210,6 @@ Piece Piezas::gameState()
                     o_max++;
             }
 
-            cout<<"X: "<<x_max<<endl;
-            cout<<"O: "<<o_max<<endl;
-            cout<<"-----------\n"<<endl;
-
             // Update who is in the lead after each row & reset
             if(x_max > o_max && x_max > lead_streak)
             {
@@ -237,8 +233,6 @@ Piece Piezas::gameState()
             }
         }
 
-        cout<<"Lead after horizontal check: "<<cur_lead<<endl;
-
         // Search vertically
         j = 0; // Column
         for(i = 0;i < (int)board.size(); i++)
@@ -252,9 +246,6 @@ Piece Piezas::gameState()
             // End of the column
             if(i == (int)board.size()-1)
             {
-                cout<<"X: "<<x_max<<endl;
-                cout<<"O: "<<o_max<<endl;
-                cout<<"-----------\n"<<endl;
                 // Update column & row if it's inbounds
                 if(j < BOARD_COLS)
                 {
@@ -286,9 +277,6 @@ Piece Piezas::gameState()
                 
             }
         }
-
-        cout<<"Lead after vertical check: "<<cur_lead<<endl;
-
         return cur_lead;
     }
 
